@@ -1,5 +1,7 @@
 # Concurrent Job Scheduler
 
+![Concurrent Job Scheduler Terminal Preview](docs/screenshots/scheduler-terminal-preview.svg)
+
 A C++17 multithreaded job scheduler that demonstrates concurrency, task queues, worker threads, and clean shutdown behavior.
 
 This project is meant to show systems level programming ability beyond basic CRUD apps. It focuses on thread coordination, scheduling logic, and production style project structure.
