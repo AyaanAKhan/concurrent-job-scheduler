@@ -1,39 +1,73 @@
 # Concurrent Job Scheduler
 
-This project contains a simple multithreaded job scheduler implemented in modern C++ (C++17).
-The scheduler accepts tasks with different priorities and executes them concurrently on a pool
-of worker threads.  It is intended as a learning example for thread synchronization,
-priority queues, and fine‐grained locking.
+A C++17 multithreaded job scheduler that demonstrates concurrency, task queues, worker threads, and clean shutdown behavior.
 
-## Features
+This project is meant to show systems level programming ability beyond basic CRUD apps. It focuses on thread coordination, scheduling logic, and production style project structure.
 
-- **Priority scheduling**: Higher-priority jobs are executed before lower-priority ones.
-- **Thread pool**: A fixed number of worker threads process tasks concurrently.
-- **Lock-free queue**: Uses a thread‐safe queue for storing incoming tasks (simplified for the example).
-- **Graceful shutdown**: Allows the scheduler to shut down cleanly while completing outstanding tasks.
+## What It Demonstrates
 
-## Building
+- Modern C++17 development
+- Worker thread pool design
+- Priority based task scheduling
+- Thread safe queue design direction
+- Synchronization and graceful shutdown
+- CMake based build workflow
 
-Compile the project with a C++17 compiler:
+## Core Concepts
+
+```text
+Submitted jobs
+     |
+     v
+Priority queue
+     |
+     v
+Worker thread pool
+     |
+     +--> Execute job A
+     +--> Execute job B
+     +--> Execute job C
+     |
+     v
+Graceful shutdown
+```
+
+## Tech Stack
+
+| Area | Tools |
+|---|---|
+| Language | C++17 |
+| Build | CMake |
+| Concepts | Threads, mutexes, condition variables, priority queues |
+
+## Build and Run
 
 ```bash
-mkdir build && cd build
+mkdir build
+cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release
 make
-
 ./concurrent_job_scheduler
 ```
 
-## Folder Structure
+## Repository Structure
 
-```
-github_projects/concurrent-job-scheduler/
-├── README.md         # Project overview and build instructions
+```text
+.
+├── README.md
 └── src/
-    └── scheduler.cpp # Minimal multithreaded scheduler implementation
+    └── scheduler.cpp
 ```
 
-## Contributing
+## Recruiter Notes
 
-Ideas for improvement include using a custom lock‐free queue implementation, adding timed
-scheduling, or supporting dynamic resizing of the thread pool.  Pull requests are welcome!
+This project is useful for showing concurrency fundamentals, C++ ability, and comfort with systems concepts. It pairs well with backend, infrastructure, embedded, fintech, and performance oriented roles.
+
+## Future Improvements
+
+- Add unit tests for queue ordering and shutdown behavior
+- Add timed jobs and delayed scheduling
+- Add dynamic worker pool resizing
+- Add benchmarks for throughput under load
+- Add CI with build and test checks
+- Separate scheduler classes into headers and source files
